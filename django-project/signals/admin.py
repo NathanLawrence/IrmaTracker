@@ -20,13 +20,12 @@ class SignalAdmin(admin.ModelAdmin):
     list_filter = ['types', 'verified', 'social_network']
     filter_horizontal = ['types']
     search_fields = ['source_user']
-    prepopulated_fields = {'slug': ('date_time', 'source_user',)}
+    prepopulated_fields = {'slug': ('source_user','pull_quote',)}
 
     fieldsets = (
         (None, {
             'fields': (
                 ('date_time', 'verified'),
-                'slug',
                 'location',
             ),
         }),
@@ -48,6 +47,7 @@ class SignalAdmin(admin.ModelAdmin):
          {
              'fields': (
                  'private_notes',
+                 'slug',
              ),
          }),
     )
