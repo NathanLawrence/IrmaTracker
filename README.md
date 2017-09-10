@@ -3,6 +3,12 @@ A Django-powered power tool for ttracking calls for help during Irma.
 
 This project is built on [Django Bakery](https://github.com/datadesk/django-bakery), a project pioneered by the LA Times Data Desk that takes complex Django sites and bakes them out as flat files.
 
+## A Note on Django-Geoposition and Django 1.11
+
+You'll have to run this to make things work:
+
+`pip install https://github.com/philippbosch/django-geoposition/archive/django-1.11.zip`
+
 ## To Work on This Project
 Be sure you have the `kbia_bakery` environment variables set on your computer, you've made a [virtual environment](https://open.nytimes.com/set-up-your-mac-like-an-interactive-news-developer-bb8d2c4097e5?mcubz=1) and run `pip install requirements.txt` on the main folder.
 

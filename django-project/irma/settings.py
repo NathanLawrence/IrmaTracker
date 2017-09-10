@@ -40,6 +40,8 @@ INSTALLED_APPS = [
     'storages',
     'bakery',
     'markdownify',
+    'geoposition',
+    'signals',
 ]
 
 MIDDLEWARE = [
@@ -114,7 +116,7 @@ AUTH_PASSWORD_VALIDATORS = [
 
 LANGUAGE_CODE = 'en-us'
 
-TIME_ZONE = 'America/Chicago'
+TIME_ZONE = 'America/New_York'
 
 USE_I18N = True
 
@@ -172,3 +174,6 @@ MARKDOWNIFY_WHITELIST_TAGS = [
 ]
 
 MARKDOWNIFY_BLEACH = False
+
+# Django Geoposition API Key
+GEOPOSITION_GOOGLE_MAPS_API_KEY = 'AIzaSyA2GAplK9293RIsnUfI0Xzl22rIXNgKkzY'
