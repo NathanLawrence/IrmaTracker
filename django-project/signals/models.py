@@ -50,8 +50,11 @@ class Signal(models.Model):
                                       choices=SOCIAL_NETWORK_CHOICES,
                                       default='TWTR')
 
+    def social_verbose(self):
+        return dict(Signal.SOCIAL_NETWORK_CHOICES)[self.social_network]
 
-
+    def get_absolute_url(self):
+        return "/irma/signals/embeds/%s" % self.id
     def __str__(self):
         return "%s at %s" % (self.source_user, str(self.date_time))
     class Meta:

@@ -34,54 +34,32 @@
         signalsArr.push({
             date_time: "{{signal.date_time}}",
             lat: {{signal.location.latitude}},
-        long: {{signal.location.longitude}},
-        source_user: "{{signal.source_user}}"
+            long: {{signal.location.longitude}},
+            source_user: '{{signal.source_user}}',
+                pull_quote: "{{signal.pull_quote}}",
+            social_network: "{{signal.social_verbose}}",
+            embed_code: "{{signal.embed_code}}",
+            embed_url: "{{signal.get_absolute_url}}"
         });
         {% endfor %}
         signalsByType['{{type.slug}}'] = {
             name: '{{type.name}}',
             signals: signalsArr.slice()
         };
+        window.signalsByType = signalsByType;
         {% endfor %}
-        console.log(signalsByType);
     </script>
     <script src="{% static 'app.js' %}"></script>
     <style>
-         .leaflet-container {
-        height: 400px;
-        width: 80%;
-        margin: 0 auto;
-      }
+        .leaflet-container {
+            height: 600px;
+            width: 100%;
+            margin: 0;
+        }
     </style>
 
 </head>
 <body>
-<!--<div class="info-card">-->
-<!--<div class="title-info">-->
-<!--<h1>Signals from Irma</h1>-->
-<!--<p class="description">Snapshots from social media in Florida before, during and after Hurricane Irma.</p>-->
-<!--</div>-->
-
-<!--<div class="app-filters">-->
-<!---->
-<!--</div>-->
-
-<!--<div class="credit">-->
-
-<!--</div>-->
-<!--</div>-->
-
-
-{% for signal in object_list %}
-<p>Signal: {{signal}}</p>
-{% endfor %}
-
-{% for type in types %}
-<h3>{{type.name}}</h3>
-{% for signal in type.signals.all %}
-<p>Signal 1</p>
-{% endfor %}
-{% endfor %}
 
 <div id="react-target"></div>
 </body>

@@ -2,7 +2,7 @@
 from __future__ import unicode_literals
 
 from django.shortcuts import render
-from bakery.views import BuildableListView
+from bakery.views import BuildableListView, BuildableDetailView
 
 from . import models
 
@@ -17,3 +17,12 @@ class MapPageView(BuildableListView):
         context = super(MapPageView, self).get_context_data(**kwargs)
         context['types'] = models.SignalType.objects.all()
         return context
+
+class EmbedFrameView(BuildableDetailView):
+    model = models.Signal
+
+    def get_object(self):
+        if self.kwargs['id']:
+            return models.Signal.objects.get(id=self.kwargs['id'])
+        return super(EmbedFrameView, self).get_objects()
+
