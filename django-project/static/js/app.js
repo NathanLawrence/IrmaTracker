@@ -51,7 +51,7 @@ $(document).ready(function () {
                         { position: [x.lat, x.long] },
                         React.createElement(
                             Popup,
-                            null,
+                            { maxWidth: 500 },
                             React.createElement(
                                 'div',
                                 { className: 'popup-content' },
@@ -60,28 +60,8 @@ $(document).ready(function () {
                                     null,
                                     x.date_time
                                 ),
-                                x.embed_code && React.createElement('iframe', { frameBorder: 0,
-                                    src: x.embed_url, width: '100%', height: '400px' }),
-                                !x.embed_code && React.createElement(
-                                    'div',
-                                    { 'class': 'info' },
-                                    React.createElement(
-                                        'p',
-                                        { className: 'pullquote' },
-                                        x.pull_quote
-                                    ),
-                                    React.createElement(
-                                        'p',
-                                        { className: 'sourcePost' },
-                                        React.createElement(
-                                            'a',
-                                            { href: '#', target: '_blank' },
-                                            x.source_user,
-                                            ' on ',
-                                            x.social_network
-                                        )
-                                    )
-                                )
+                                React.createElement('iframe', { frameBorder: 0,
+                                    src: x.embed_url, width: '100%', height: '400px' })
                             )
                         )
                     );

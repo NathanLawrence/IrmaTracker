@@ -7,6 +7,7 @@
 <head>
     <meta charset="UTF-8">
     <title>Title</title>
+    <link rel="stylesheet" href="{% static 'styles.css' %}">
     <script crossorigin src="https://unpkg.com/react@15/dist/react.min.js"></script>
     <script crossorigin src="https://unpkg.com/react-dom@15/dist/react-dom.min.js"></script>
     <link rel="stylesheet" href="https://unpkg.com/leaflet@1.2.0/dist/leaflet.css" />
@@ -38,7 +39,6 @@
             source_user: '{{signal.source_user}}',
                 pull_quote: "{{signal.pull_quote}}",
             social_network: "{{signal.social_verbose}}",
-            embed_code: "{{signal.embed_code}}",
             embed_url: "{{signal.get_absolute_url}}"
         });
         {% endfor %}

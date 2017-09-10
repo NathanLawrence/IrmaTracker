@@ -39,19 +39,11 @@ $(document).ready(function() {
 
                 {this.state.displayedSignals.map(function(x,i){
                     return <Marker position={[x.lat, x.long]}>
-                        <Popup>
+                        <Popup maxWidth={500}>
                             <div className="popup-content">
                                 <h2>{x.date_time}</h2>
-
-                                {x.embed_code &&
                                 <iframe frameBorder={0}
-                                        src={x.embed_url} width="100%" height="400px" ></iframe>}
-                                {!x.embed_code &&
-                                <div class="info">
-                                    <p className="pullquote">{x.pull_quote}</p>
-                                    <p className="sourcePost"><a href="#" target="_blank">
-                                        {x.source_user} on {x.social_network}
-                                    </a></p></div>}
+                                        src={x.embed_url} width="100%" height="400px" ></iframe>
                             </div>
                         </Popup>
                     </Marker>;
