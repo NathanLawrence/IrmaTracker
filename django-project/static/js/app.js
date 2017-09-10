@@ -35,8 +35,18 @@ $(document).ready(function () {
                 allSignals: allSignals,
                 displayedSignals: allSignals,
                 signalTypes: signalTypes,
+                pymChild: window.pymChild,
                 targetedSignalType: '*'
             };
+        },
+        updateFrameSize: function updateFrameSize() {
+            this.state.pymChild.sendHeight();
+        },
+        componentDidMount: function componentDidMount() {
+            this.updateFrameSize();
+        },
+        componentDidUpdate: function componentDidUpdate() {
+            this.updateFrameSize();
         },
         render: function render() {
             return React.createElement(
@@ -51,7 +61,7 @@ $(document).ready(function () {
                         { position: [x.lat, x.long] },
                         React.createElement(
                             Popup,
-                            { maxWidth: 500 },
+                            { maxWidth: 800 },
                             React.createElement(
                                 'div',
                                 { className: 'popup-content' },

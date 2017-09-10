@@ -52,15 +52,21 @@
     <script src="{% static 'app.js' %}"></script>
     <style>
         .leaflet-container {
-            height: 600px;
+            height: 700px;
             width: 100%;
             margin: 0;
         }
     </style>
 
+    <script src="https://pym.nprapps.org/pym.v1.min.js"></script>
 </head>
 <body>
 
 <div id="react-target"></div>
+
+<script>
+    var pymChild = new pym.Child();
+    window.pymChild = pymChild;
+</script>
 </body>
 </html>

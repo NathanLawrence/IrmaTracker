@@ -28,8 +28,18 @@ $(document).ready(function() {
                 allSignals: allSignals,
                 displayedSignals: allSignals,
                 signalTypes: signalTypes,
+                pymChild: window.pymChild,
                 targetedSignalType: '*'
             };
+        },
+        updateFrameSize: function (){
+            this.state.pymChild.sendHeight();
+        },
+        componentDidMount: function (){
+            this.updateFrameSize();
+        },
+        componentDidUpdate: function (){
+            this.updateFrameSize();
         },
         render: function(){
             return (<Map center={position} zoom={8}>
@@ -39,7 +49,7 @@ $(document).ready(function() {
 
                 {this.state.displayedSignals.map(function(x,i){
                     return <Marker position={[x.lat, x.long]}>
-                        <Popup maxWidth={500}>
+                        <Popup maxWidth={800}>
                             <div className="popup-content">
                                 <h2>{x.date_time}</h2>
                                 <iframe frameBorder={0}
