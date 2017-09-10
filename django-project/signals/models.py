@@ -49,12 +49,15 @@ class Signal(models.Model):
     social_network = models.CharField(max_length=6,
                                       choices=SOCIAL_NETWORK_CHOICES,
                                       default='TWTR')
+    slug = slug = models.SlugField("Slug",
+                            max_length=1024,
+                                   unique=True)
 
     def social_verbose(self):
         return dict(Signal.SOCIAL_NETWORK_CHOICES)[self.social_network]
 
     def get_absolute_url(self):
-        return "/irma/signals/embeds/%s" % self.id
+        return "/irma/signals/embeds/%s" % self.slug
     def __str__(self):
         return "%s at %s" % (self.source_user, str(self.date_time))
     class Meta:

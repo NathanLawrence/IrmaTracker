@@ -22,7 +22,7 @@ class EmbedFrameView(BuildableDetailView):
     model = models.Signal
 
     def get_object(self):
-        if self.kwargs['id']:
-            return models.Signal.objects.get(id=self.kwargs['id'])
+        if self.kwargs["slug"]:
+            return models.Signal.objects.get(slug=self.kwargs['slug'])
         return super(EmbedFrameView, self).get_objects()
 
