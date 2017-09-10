@@ -1,1 +1,77 @@
-!function(){"use strict";if("querySelector"in document&&"addEventListener"in window&&Array.prototype.forEach){var a=function(a,b){var c,d=window.pageYOffset,e=a.offsetTop-30,f=e-d,g=f/(b/16),h=function(){window.scrollBy(0,g),c()};c=g>=0?function(){var a=window.pageYOffset;(a>=e-g||window.innerHeight+a>=document.body.offsetHeight)&&clearInterval(i)}:function(){window.pageYOffset<=(e||0)&&clearInterval(i)};var i=setInterval(h,16)},b=document.querySelectorAll(".scroll");[].forEach.call(b,function(b){b.addEventListener("click",function(c){c.preventDefault();var d=b.getAttribute("href"),e=document.querySelector(d),f=b.getAttribute("data-speed");e&&a(e,f||500)},!1)})}}();
+'use strict';
+
+(function () {
+
+    'use strict';
+
+    // Feature Test
+
+    if ('querySelector' in document && 'addEventListener' in window && Array.prototype.forEach) {
+
+        // Function to animate the scroll
+        var smoothScroll = function smoothScroll(anchor, duration) {
+
+            // Calculate how far and how fast to scroll
+            var startLocation = window.pageYOffset;
+            var endLocation = anchor.offsetTop - 30;
+            var distance = endLocation - startLocation;
+            var increments = distance / (duration / 16);
+            var stopAnimation;
+
+            // Scroll the page by an increment, and check if it's time to stop
+            var animateScroll = function animateScroll() {
+                window.scrollBy(0, increments);
+                stopAnimation();
+            };
+
+            // If scrolling down
+            if (increments >= 0) {
+                // Stop animation when you reach the anchor OR the bottom of the page
+                stopAnimation = function stopAnimation() {
+                    var travelled = window.pageYOffset;
+                    if (travelled >= endLocation - increments || window.innerHeight + travelled >= document.body.offsetHeight) {
+                        clearInterval(runAnimation);
+                    }
+                };
+            }
+            // If scrolling up
+            else {
+                    // Stop animation when you reach the anchor OR the top of the page
+                    stopAnimation = function stopAnimation() {
+                        var travelled = window.pageYOffset;
+                        if (travelled <= (endLocation || 0)) {
+                            clearInterval(runAnimation);
+                        }
+                    };
+                }
+
+            // Loop the animation function
+            var runAnimation = setInterval(animateScroll, 16);
+        };
+
+        // Define smooth scroll links
+        var scrollToggle = document.querySelectorAll('.scroll');
+
+        // For each smooth scroll link
+        [].forEach.call(scrollToggle, function (toggle) {
+
+            // When the smooth scroll link is clicked
+            toggle.addEventListener('click', function (e) {
+
+                // Prevent the default link behavior
+                e.preventDefault();
+
+                // Get anchor link and calculate distance from the top
+                var dataID = toggle.getAttribute('href');
+                var dataTarget = document.querySelector(dataID);
+                var dataSpeed = toggle.getAttribute('data-speed');
+
+                // If the anchor exists
+                if (dataTarget) {
+                    // Scroll to the anchor
+                    smoothScroll(dataTarget, dataSpeed || 500);
+                }
+            }, false);
+        });
+    }
+})();

@@ -45,6 +45,14 @@
         {% endfor %}
         console.log(signalsByType);
     </script>
+    <script src="{% static 'app.js' %}"></script>
+    <style>
+         .leaflet-container {
+        height: 400px;
+        width: 80%;
+        margin: 0 auto;
+      }
+    </style>
 
 </head>
 <body>
@@ -74,5 +82,7 @@
 <p>Signal 1</p>
 {% endfor %}
 {% endfor %}
+
+<div id="react-target"></div>
 </body>
 </html>

@@ -30,16 +30,16 @@ gulp.task('img', function(){
 });
 
 gulp.task('js', function(){
-	return gulp.src('components/js/**/*.js')
+	return gulp.src('./django-project/static/components/js/**/*.js')
 		.pipe(babel({
 			presets: ['es2015', 'react']
 		}))
 		// .pipe(uglify())
-	.pipe(gulp.dest('build/js'));
+	.pipe(gulp.dest('./django-project/static/js'));
 });
 
 gulp.task('fonts', function(){
-	return gulp.src('components/fonts/*')
+	return gulp.src('django-project/static/components/components/fonts/*')
 	.pipe(gulp.dest('build/fonts'));
 });
 
@@ -53,10 +53,10 @@ gulp.task('build', ['img', 'js', 'html', 'sass']);
 gulp.task('watch',function(){
 	gutil.log('Gulp will say that this task has finished, but don\'t believe its dirty lies.');
 	gutil.log('Hit \^c to actually exit watch mode.');
-	gulp.watch('components/**/*.js',['js']);
-	gulp.watch('components/**/*.html',['html']);
-	gulp.watch('components/**/*.jpg',['img']);
-    gulp.watch('components/**/*.scss',['sass']);
+	gulp.watch('**/*.js',['js']);
+	gulp.watch('**/*.html',['html']);
+	gulp.watch('**/*.jpg',['img']);
+    gulp.watch('**/*.scss',['sass']);
 });
 
 gulp.task('serve',['build'], function(){
@@ -68,8 +68,8 @@ gulp.task('serve',['build'], function(){
 			directorylisting: true,
 			open: true
 		}))
-	gulp.watch('components/**/*.js',['js']);
-	gulp.watch('components/**/*.html',['html']);
-	gulp.watch('components/**/*.jpg',['img']);
-    gulp.watch('components/**/*.scss',['sass']);
+	gulp.watch('**/*.js',['js']);
+	gulp.watch('**/*.html',['html']);
+	gulp.watch('**/*.jpg',['img']);
+    gulp.watch('**/*.scss',['sass']);
 });
