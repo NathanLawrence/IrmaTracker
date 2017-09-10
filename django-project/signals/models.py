@@ -31,7 +31,7 @@ class Signal(models.Model):
     verified = models.BooleanField("Verified",
                                    default=True)
     types = models.ManyToManyField(SignalType,
-                                  related_name="signal",
+                                  related_name="signals",
                                   related_query_name="signals")
     pull_quote = models.CharField("Pull Quote",
                                   blank=True,

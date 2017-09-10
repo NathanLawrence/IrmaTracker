@@ -42,6 +42,7 @@ INSTALLED_APPS = [
     'markdownify',
     'geoposition',
     'signals',
+    'jsonify',
 ]
 
 MIDDLEWARE = [
