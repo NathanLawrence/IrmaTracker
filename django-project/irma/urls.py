@@ -18,12 +18,14 @@ from django.conf.urls.static import static
 from django.contrib import admin
 from django.conf import settings
 
+from signals import views as SignalViews
+
 
 
 urlpatterns = [
                   url(r'^admin/', admin.site.urls),
                   # A Couple of Suggested URL Configs
-                  # url(r'^irma/$', HomePageView.as_view()),
+                  url(r'^irma/map/$', SignalViews.MapPageView.as_view()),
                   # url(r'^irma/posts/(?P<slug>[\w-]+)/$', PostDetailView.as_view(), name='posts'),
               ] + static(settings.STATIC_URL, document_root=settings.STATIC_ROOT)
 

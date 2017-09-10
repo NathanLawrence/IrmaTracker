@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <script src="https://unpkg.com/react-leaflet/dist/react-leaflet.min.js"></script>
+
+</head>
+<body>
+<!--<div class="info-card">-->
+    <!--<div class="title-info">-->
+        <!--<h1>Signals from Irma</h1>-->
+        <!--<p class="description">Snapshots from social media in Florida before, during and after Hurricane Irma.</p>-->
+    <!--</div>-->
+
+    <!--<div class="app-filters">-->
+        <!---->
+    <!--</div>-->
+
+    <!--<div class="credit">-->
+
+    <!--</div>-->
+<!--</div>-->
+
+
+{% for signal in object_list %}
+    <p>Signal: {{signal}}</p>
+{% endfor %}
+</body>
+</html>
